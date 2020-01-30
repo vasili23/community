@@ -1,7 +1,7 @@
 package work.flipped.community.dao;
 
-import org.apache.ibatis.annotations.Mapper;
 import work.flipped.community.entity.Comment;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 

@@ -1,15 +1,15 @@
 package work.flipped.community.service;
 
+import work.flipped.community.dao.CommentMapper;
+import work.flipped.community.entity.Comment;
+import work.flipped.community.util.CommunityConstant;
+import work.flipped.community.util.SensitiveFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.util.HtmlUtils;
-import work.flipped.community.dao.CommentMapper;
-import work.flipped.community.entity.Comment;
-import work.flipped.community.util.CommunityConstant;
-import work.flipped.community.util.SensitiveFilter;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package work.flipped.community.dao;
 
-import org.apache.ibatis.annotations.*;
 import work.flipped.community.entity.LoginTicket;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface LoginTicketMapper {
@@ -20,12 +20,7 @@ public interface LoginTicketMapper {
     LoginTicket selectByTicket(String ticket);
 
     @Update({
-            "<script>",
-            "update login_ticket set status=#{status} where ticket=#{ticket} ",
-            "<if test=\"ticket!=null\"> ",
-            "and 1=1 ",
-            "</if>",
-            "</script>"
+            "update login_ticket set status=#{status} where ticket=#{ticket}"
     })
     int updateStatus(String ticket, int status);
 

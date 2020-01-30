@@ -8,9 +8,30 @@ public class Message {
     private int fromId;
     private int toId;
     private String conversationId;
-    private String content;
     private int status;
+    private String content;
     private Date createTime;
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", fromId=" + fromId +
+                ", toId=" + toId +
+                ", conversationId=" + conversationId +
+                ", status=" + status +
+                ", content='" + content + '\'' +
+                ", createTime=" + createTime +
+                '}';
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
     public int getId() {
         return id;
@@ -44,14 +65,6 @@ public class Message {
         this.conversationId = conversationId;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public int getStatus() {
         return status;
     }
@@ -60,24 +73,12 @@ public class Message {
         this.status = status;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public String getContent() {
+        return content;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    @Override
-    public String toString() {
-        return "Message{" +
-                "id=" + id +
-                ", fromId=" + fromId +
-                ", toId=" + toId +
-                ", conversationId='" + conversationId + '\'' +
-                ", content='" + content + '\'' +
-                ", status=" + status +
-                ", createTime=" + createTime +
-                '}';
-    }
 }

@@ -1,14 +1,14 @@
 package work.flipped.community.dao;
 
-import org.apache.ibatis.annotations.Mapper;
 import work.flipped.community.entity.User;
+import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UserMapper {
 
     User selectById(int id);
 
-    User selectByName(String username);
+    User selectByName(String name);
 
     User selectByEmail(String email);
 
@@ -19,5 +19,4 @@ public interface UserMapper {
     int updateHeader(int id, String headerUrl);
 
     int updatePassword(int id, String password);
-
 }
