@@ -11,7 +11,7 @@ function publish() {
 
 	// 发送异步请求
 	$.post(
-		CONTEXT_PATH + "/discuss/add",
+		"/discuss/add",
 		{"title":title,"content":content},
 		function (data) {
 			data = $.parseJSON(data);
