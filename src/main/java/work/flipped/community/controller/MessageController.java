@@ -1,12 +1,5 @@
 package work.flipped.community.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import work.flipped.community.entity.Message;
 import work.flipped.community.entity.Page;
 import work.flipped.community.entity.User;
@@ -14,6 +7,13 @@ import work.flipped.community.service.MessageService;
 import work.flipped.community.service.UserService;
 import work.flipped.community.util.CommunityUtil;
 import work.flipped.community.util.HostHolder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.*;
 

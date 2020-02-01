@@ -3,6 +3,7 @@ package work.flipped.community.entity;
 import java.util.Date;
 
 public class User {
+
     private int id;
     private String username;
     private String password;
@@ -109,4 +110,5 @@ public class User {
                 ", createTime=" + createTime +
                 '}';
     }
+
 }

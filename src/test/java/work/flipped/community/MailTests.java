@@ -1,13 +1,18 @@
 package work.flipped.community;
 
 import work.flipped.community.util.MailClient;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
+@ContextConfiguration(classes = CommunityApplication.class)
 public class MailTests {
 
     @Autowired
@@ -17,19 +22,19 @@ public class MailTests {
     private TemplateEngine templateEngine;
 
     @Test
-    public void testTestMail() {
-        mailClient.sendMail("704681371@qq.com","Test", "Test Again");
+    public void testTextMail() {
+        mailClient.sendMail("lihonghe@nowcoder.com", "TEST", "Welcome.");
     }
 
     @Test
     public void testHtmlMail() {
         Context context = new Context();
-        context.setVariable("username","sunday");
+        context.setVariable("username", "sunday");
 
-        // 生成网页
         String content = templateEngine.process("/mail/demo", context);
         System.out.println(content);
 
-        mailClient.sendMail("704681371@qq.com","HTML Test", content);
+        mailClient.sendMail("lihonghe@nowcoder.com", "HTML", content);
     }
+
 }

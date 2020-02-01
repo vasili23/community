@@ -2,18 +2,25 @@ package work.flipped.community;
 
 import work.flipped.community.dao.DiscussPostMapper;
 import work.flipped.community.dao.LoginTicketMapper;
+import work.flipped.community.dao.MessageMapper;
 import work.flipped.community.dao.UserMapper;
 import work.flipped.community.entity.DiscussPost;
 import work.flipped.community.entity.LoginTicket;
+import work.flipped.community.entity.Message;
 import work.flipped.community.entity.User;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
 import java.util.List;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
+@ContextConfiguration(classes = CommunityApplication.class)
 public class MapperTests {
 
     @Autowired
@@ -24,6 +31,9 @@ public class MapperTests {
 
     @Autowired
     private LoginTicketMapper loginTicketMapper;
+
+    @Autowired
+    private MessageMapper messageMapper;
 
     @Test
     public void testSelectUser() {
@@ -57,7 +67,7 @@ public class MapperTests {
         int rows = userMapper.updateStatus(150, 1);
         System.out.println(rows);
 
-        rows = userMapper.updateHeader(150,"http://www.nowcoder.com/102.png");
+        rows = userMapper.updateHeader(150, "http://www.nowcoder.com/102.png");
         System.out.println(rows);
 
         rows = userMapper.updatePassword(150, "hello");
@@ -65,10 +75,9 @@ public class MapperTests {
     }
 
     @Test
-    public void testSelectDiscussPosts() {
-        List<DiscussPost> discussPosts = discussPostMapper.selectDiscussPosts(149, 0,10);
-        for (DiscussPost post :
-                discussPosts) {
+    public void testSelectPosts() {
+        List<DiscussPost> list = discussPostMapper.selectDiscussPosts(149, 0, 10);
+        for (DiscussPost post : list) {
             System.out.println(post);
         }
 
@@ -82,7 +91,7 @@ public class MapperTests {
         loginTicket.setUserId(101);
         loginTicket.setTicket("abc");
         loginTicket.setStatus(0);
-        loginTicket.setExpired(new Date(System.currentTimeMillis()+1000*60*10));
+        loginTicket.setExpired(new Date(System.currentTimeMillis() + 1000 * 60 * 10));
 
         loginTicketMapper.insertLoginTicket(loginTicket);
     }
@@ -95,6 +104,29 @@ public class MapperTests {
         loginTicketMapper.updateStatus("abc", 1);
         loginTicket = loginTicketMapper.selectByTicket("abc");
         System.out.println(loginTicket);
+    }
+
+    @Test
+    public void testSelectLetters() {
+        List<Message> list = messageMapper.selectConversations(111, 0, 20);
+        for (Message message : list) {
+            System.out.println(message);
+        }
+
+        int count = messageMapper.selectConversationCount(111);
+        System.out.println(count);
+
+        list = messageMapper.selectLetters("111_112", 0, 10);
+        for (Message message : list) {
+            System.out.println(message);
+        }
+
+        count = messageMapper.selectLetterCount("111_112");
+        System.out.println(count);
+
+        count = messageMapper.selectLetterUnreadCount(131, "111_131");
+        System.out.println(count);
+
     }
 
 }

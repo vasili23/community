@@ -1,8 +1,8 @@
 package work.flipped.community.dao;
 
+import work.flipped.community.entity.DiscussPost;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import work.flipped.community.entity.DiscussPost;
 
 import java.util.List;
 

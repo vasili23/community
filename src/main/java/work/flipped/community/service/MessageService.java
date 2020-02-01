@@ -1,11 +1,11 @@
 package work.flipped.community.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.util.HtmlUtils;
 import work.flipped.community.dao.MessageMapper;
 import work.flipped.community.entity.Message;
 import work.flipped.community.util.SensitiveFilter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.util.HtmlUtils;
 
 import java.util.List;
 
