@@ -1,6 +1,5 @@
 package work.flipped.community.config;
 
-import work.flipped.community.controller.interceptor.AlphaInterceptor;
 import work.flipped.community.controller.interceptor.LoginRequiredInterceptor;
 import work.flipped.community.controller.interceptor.LoginTicketInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
