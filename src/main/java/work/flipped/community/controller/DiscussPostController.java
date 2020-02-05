@@ -1,16 +1,5 @@
 package work.flipped.community.controller;
 
-import work.flipped.community.entity.Comment;
-import work.flipped.community.entity.DiscussPost;
-import work.flipped.community.entity.Page;
-import work.flipped.community.entity.User;
-import work.flipped.community.service.CommentService;
-import work.flipped.community.service.DiscussPostService;
-import work.flipped.community.service.LikeService;
-import work.flipped.community.service.UserService;
-import work.flipped.community.util.CommunityConstant;
-import work.flipped.community.util.CommunityUtil;
-import work.flipped.community.util.HostHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +7,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import work.flipped.community.entity.*;
+import work.flipped.community.event.EventProducer;
+import work.flipped.community.service.CommentService;
+import work.flipped.community.service.DiscussPostService;
+import work.flipped.community.service.LikeService;
+import work.flipped.community.service.UserService;
+import work.flipped.community.util.CommunityConstant;
+import work.flipped.community.util.CommunityUtil;
+import work.flipped.community.util.HostHolder;
 
 import java.util.*;
 
@@ -40,6 +38,9 @@ public class DiscussPostController implements CommunityConstant {
     @Autowired
     private LikeService likeService;
 
+    @Autowired
+    private EventProducer eventProducer;
+
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     @ResponseBody
     public String addDiscussPost(String title, String content) {
@@ -54,6 +55,14 @@ public class DiscussPostController implements CommunityConstant {
         post.setContent(content);
         post.setCreateTime(new Date());
         discussPostService.addDiscussPost(post);
+
+        // 触发发帖事件
+        Event event = new Event()
+                .setTopic(TOPIC_PUBLISH)
+                .setUserId(user.getId())
+                .setEntityType(ENTITY_TYPE_POST)
+                .setEntityId(post.getId());
+        eventProducer.fireEvent(event);
 
         // 报错的情况,将来统一处理.
         return CommunityUtil.getJSONString(0, "发布成功!");
