@@ -9,7 +9,6 @@ sprigboot + mybaits + maven + mysql + redis
 | --------   | -----:   |
 | 注册/登陆        |   ✔    |
 | 站内信        |  ✔     |
-| 推送问题        | ❌      |
 | 敏感词过滤        | ✔      |
 | 评论中心        | ✔      |
 | 解答赞踩        | ✔      |
@@ -18,8 +17,7 @@ sprigboot + mybaits + maven + mysql + redis
 | 邮件发送        | ✔       |
 | 问题关注        | ✔       |
 | 用户互关        | ✔       |
-| 推送时间线        | ❌      |
-| 搜索            | ❌       |
+| 搜索功能            | ❌       |
 
 ## 项目总结
 
@@ -27,22 +25,18 @@ sprigboot + mybaits + maven + mysql + redis
 * **Spring**
 * Spring MVC、Spring Mybatis、**Spring Security**
 * 权限@会话管理
-  * 注册、登录、退出、状态、设置、授权
+  * 注册、登录、退出、状态、设置
   * Spring Email、**Interceptor**
 * 核心@敏感词、@事务
   * 首页、帖子、评论、私信、异常、日志
   * Advice、**AOP**、**Transaction**
 * 性能@数据结构
-  * 点赞、关注、统计、缓存
+  * 点赞、关注
   * **Redis**
-* 通知@模式
-  * 系统通知
+* 通知
   * Kafka
 * 搜索@索引
   * 全文搜索
   * Elasticsearch
-* 其他@线程池、@缓存
-  * 排行、上传、服务器缓存
-  * Quartz、**Caffeine**
 
 ## 
