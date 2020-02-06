@@ -1,6 +1,7 @@
 package work.flipped.community.controller;
 
 import com.google.code.kaptcha.Producer;
+import org.springframework.security.core.context.SecurityContextHolder;
 import work.flipped.community.entity.User;
 import work.flipped.community.service.UserService;
 import work.flipped.community.util.CommunityConstant;
@@ -152,6 +153,7 @@ public class LoginController implements CommunityConstant {
     @RequestMapping(path = "/logout", method = RequestMethod.GET)
     public String logout(@CookieValue("ticket") String ticket) {
         userService.logout(ticket);
+        SecurityContextHolder.clearContext();
         return "redirect:/login";
     }
 
