@@ -56,6 +56,7 @@ public class UserController implements CommunityConstant {
     @LoginRequired
     @RequestMapping(path = "/setting", method = RequestMethod.GET)
     public String getSettingPage() {
+
         return "/site/setting";
     }
 
