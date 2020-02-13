@@ -56,23 +56,17 @@ public class UserController implements CommunityConstant {
     @Autowired
     private FollowService followService;
 
-    @Value("{qiniu.key.access}")
+    @Value("${qiniu.key.access}")
     private String accesskey;
 
-    @Value("{qiniu.key.secret}")
+    @Value("${qiniu.key.secret}")
     private String secretKey;
 
-    @Value("{qiniu.bucket.header.name}")
+    @Value("${qiniu.bucket.header.name}")
     private String headerBucketName;
 
-    @Value("{qiniu.bucket.header.url}")
+    @Value("${qiniu.bucket.header.url}")
     private String headerBucketUrl;
-
-    @Value("{qiniu.bucket.share.name}")
-    private String shareBucketName;
-
-    @Value("{qiniu.bucket.share.url}")
-    private String shareBucketUrl;
 
     @LoginRequired
     @RequestMapping(path = "/setting", method = RequestMethod.GET)
@@ -103,6 +97,7 @@ public class UserController implements CommunityConstant {
         return CommunityUtil.getJSONString(0);
     }
 
+    // 废弃
     @Deprecated
     @LoginRequired
     @RequestMapping(path = "/upload", method = RequestMethod.POST)
